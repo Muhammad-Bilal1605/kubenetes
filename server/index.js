@@ -43,7 +43,7 @@ const connectDB = () => {
 const startServer = async () => {
   try {
     connectDB();
-    app.listen(4000, () => console.log("Server started on port 8080"));
+    app.listen(4000, () => console.log("Server started on port 4000"));
   } catch (error) {
     console.log(error);
   }
