@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - fitness-network
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=example  # Change this in production!
+  
+  # Backend Service
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: fitness-backend
+    restart: always
+    depends_on:
+      - mongodb
+    networks:
+      - fitness-network
+    environment:
+      - MONGO_URI=mongodb://root:example@mongodb:27017/fitnessTrack?authSource=admin
+      - PORT=4000
+      - NODE_ENV=production
+
+  # Frontend Service
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: fitness-frontend
+    restart: always
+    depends_on:
+      - backend
+    networks:
+      - fitness-network
+    ports:
+      - "80:80"  # Map to port 80 on the host
+
+networks:
+  fitness-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+    driver: local 
