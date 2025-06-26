@@ -26,7 +26,7 @@ services:
     networks:
       - fitness-network
     environment:
-      - MONGO_URI=mongodb://root:example@mongodb:27017/fitnessTrack?authSource=admin
+      - MONGO_URI=mongodb+srv://bilalgamestorage1605:xcnZLxXPrG7bn9eY@cluster0.xcle3g5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
       - PORT=4000
       - NODE_ENV=production
 

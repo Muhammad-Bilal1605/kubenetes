@@ -1,7 +1,10 @@
 import axios from "axios";
 
+// Use environment variable or fallback to localhost for development
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:4000/api/";
+
 const API = axios.create({
-  baseURL: "/api/",
+  baseURL: API_BASE_URL,
 });
 
 export const UserSignUp = async (data) => API.post("/user/signup", data);
