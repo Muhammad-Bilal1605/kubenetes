@@ -8,6 +8,9 @@ RUN npm install
 
 COPY ./client .
 
+# Set the API URL for production build
+ENV REACT_APP_API_URL=/api/
+
 RUN npm run build
 
 FROM nginx:alpine
