@@ -37,6 +37,11 @@ spec:
             configMapKeyRef:
               name: fitness-app-config
               key: MONGO_URI
+        - name: JWT
+          valueFrom:
+            configMapKeyRef:
+              name: fitness-app-config
+              key: JWT
         resources:
           requests:
             memory: "128Mi"

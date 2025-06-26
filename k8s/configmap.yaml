@@ -7,4 +7,5 @@ data:
   NODE_ENV: "production"
   PORT: "4000"
   MONGO_URI: "mongodb://root:example@mongodb-service:27017/fitnessdb?authSource=admin"
-  REACT_APP_API_URL: "http://backend-service:4000/api/" 
+  JWT: "your-secret-jwt-key-for-fitness-app-12345"
+  REACT_APP_API_URL: "/api/" 
